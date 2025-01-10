@@ -1,0 +1,25 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Otus.Teaching.PromoCodeFactory.WebHost";
+
+service CustomerGrpc {
+  rpc GetCustomers (Empty) returns (CustomerList);
+  rpc GetCustomer (GuidRequest) returns (CustomerShortResponseReply);
+}
+
+message GuidRequest {
+    string Guid = 1;
+}
+
+message Empty {}
+
+message CustomerShortResponseReply {
+	string Id = 1;
+    string FirstName = 2;
+    string LastName = 3;
+    string Email = 4;
+}
+
+message CustomerList {
+    repeated CustomerShortResponseReply Customers = 1;
+}
